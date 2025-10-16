@@ -26,15 +26,6 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"dataset": {
-						"referenceName": "ds_flatfile",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "configs",
-							"file_path": "emr",
-							"file_name": "load_config.csv"
-						}
-					},
 					"firstRowOnly": false
 				}
 			},
@@ -71,21 +62,6 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"dataset": {
-									"referenceName": "ds_parquet_generic",
-									"type": "DatasetReference",
-									"parameters": {
-										"container": "bronze",
-										"file_path": {
-											"value": "@item().targetpath",
-											"type": "Expression"
-										},
-										"file_name": {
-											"value": "@split(item().tablename,'.')[1]",
-											"type": "Expression"
-										}
-									}
-								},
 								"fieldList": [
 									"exists"
 								],
@@ -150,50 +126,8 @@
 													"type": "ParquetWriteSettings"
 												}
 											},
-											"enableStaging": false,
-											"translator": {
-												"type": "TabularTranslator",
-												"typeConversion": true,
-												"typeConversionSettings": {
-													"allowDataTruncation": true,
-													"treatBooleanAsNumber": false
-												}
-											}
-										},
-										"inputs": [
-											{
-												"referenceName": "ds_parquet_generic",
-												"type": "DatasetReference",
-												"parameters": {
-													"container": "bronze",
-													"file_path": {
-														"value": "@item().targetpath",
-														"type": "Expression"
-													},
-													"file_name": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										],
-										"outputs": [
-											{
-												"referenceName": "ds_parquet_generic",
-												"type": "DatasetReference",
-												"parameters": {
-													"container": "bronze",
-													"file_path": {
-														"value": "@concat(item().targetpath,'/archive/',formatDateTime(utcNow(),'yyyy'),'/', formatDateTime(utcNow(),'%M'),'/', formatDateTime(utcNow(),'%d'))",
-														"type": "Expression"
-													},
-													"file_name": {
-														"value": "@split(item().tablename,'.')[1]",
-														"type": "Expression"
-													}
-												}
-											}
-										]
+											"enableStaging": false
+										}
 									}
 								]
 							}
@@ -225,10 +159,6 @@
 										},
 										"userProperties": [],
 										"typeProperties": {
-											"pipeline": {
-												"referenceName": "full_and_increm",
-												"type": "PipelineReference"
-											},
 											"waitOnCompletion": true
 										}
 									}
