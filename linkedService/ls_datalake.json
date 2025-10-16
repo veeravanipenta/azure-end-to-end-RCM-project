@@ -1,0 +1,20 @@
+{
+	"name": "ls_datalake",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://ttrcmblob.dfs.core.windows.net",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_kv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "adls-acess-key",
+				"secretVersion": "8d9255c6f5984177a0d54b571463a04b"
+			}
+		}
+	}
+}

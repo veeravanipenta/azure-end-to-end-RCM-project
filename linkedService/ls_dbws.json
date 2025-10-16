@@ -1,0 +1,21 @@
+{
+	"name": "ls_dbws",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-3012869609480448.8.azuredatabricks.net",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_kv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "tt-rcm-db",
+				"secretVersion": "560bbd988dc1457baa6fc36cec75d8ab"
+			},
+			"existingClusterId": "0922-215646-kfnnyqmt"
+		}
+	}
+}

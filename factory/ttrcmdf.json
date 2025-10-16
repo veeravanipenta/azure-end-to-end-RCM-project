@@ -1,0 +1,9 @@
+{
+	"name": "ttrcmdf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "94c0f878-558b-454d-999f-4a7b0eceaa50",
+		"tenantId": "91a3481d-6470-4663-8084-d4810e318552"
+	}
+}
